@@ -63,19 +63,7 @@ function update(){
 }
 update();
 
-
-
-
-//circles / stars
-
-// for(var i = 0; i < 250; i++){
-//     var x = Math.random() * canvas.width;
-//     var y = Math.random() * canvas.height;
-//     c.beginPath();
-//     c.arc(x, y, 3, 0, Math.PI * 2, false);
-//     c.fillStyle = 'white'
-//     c.fill();
-//     c.strokeStyle = "white";
-//     c.stroke();
-//     starArrays.push
-// }
+function windowResize(){
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    
+}
