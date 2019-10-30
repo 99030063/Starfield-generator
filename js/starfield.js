@@ -8,12 +8,13 @@ var c = canvas.getContext("2d") //c is context
 var starDivider = 4
 var numStars = (canvas.width + canvas.height) / starDivider;
 var starArray = [];
-var size = 1;
+var size = 5;
 var fl = canvas.width;
 var centerX = canvas.width/2;
 var centerY = canvas.height/2;
 var speedVar = 2;
 var blackHole = 50
+var color = getRandomColor();
 
 for(var i = 0; i < numStars; i++){
     starArray[i] = new Star();
@@ -56,16 +57,16 @@ function Star(){
         s = size * (fl/this.z);
         speed=s*speedVar;
         c.beginPath();
-        c.fillStyle = "white";
+        c.fillStyle = getRandomColor();
         c.arc(x, y, s, 0, Math.PI*2);
         c.fill();
     }
 }
 
 function draw(){
-    c.fillStyle = "black";
-    c.fillRect(0,0,canvas.width, canvas.height);
-    // 
+    // c.fillStyle = "black";
+    // c.fillRect(0,0,canvas.width, canvas.height);
+    // // 
     fl = canvas.width;
     canvas.width = window.innerWidth;
     canvas.height= window.innerHeight;
@@ -92,6 +93,14 @@ function windowResize(){
     for(var i = 0; i < numStars; i++){
         starArray[i] = new Star();
     }
+}
+function getRandomColor(){
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++){
+        color += letters[Math.floor(Math.random()*16)];
+    }
+    return color;
 }
 
 
