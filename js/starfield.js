@@ -8,13 +8,16 @@ var c = canvas.getContext("2d") //c is context
 var starDivider = 4
 var numStars = (canvas.width + canvas.height) / starDivider;
 var starArray = [];
-var size = 5;
+var size = 1;
 var fl = canvas.width;
 var centerX = canvas.width/2;
 var centerY = canvas.height/2;
-var speedVar = 2;
-var blackHole = 50
+var speedVar = 1.5;
+var blackHole = 100
 var color = getRandomColor();
+var colorOption = 3;    // 1 = random kleur voor hele veld
+                        // 2 = elke frame een random kleur
+                        // 3 = alle sterren zijn wit
 
 for(var i = 0; i < numStars; i++){
     starArray[i] = new Star();
@@ -57,7 +60,14 @@ function Star(){
         s = size * (fl/this.z);
         speed=s*speedVar;
         c.beginPath();
-        c.fillStyle = getRandomColor();
+        if(colorOption == 1){
+            c.fillStyle = color;
+        }else if (colorOption == 2){
+            c.fillStyle = getRandomColor();
+        }else if(colorOption == 3){
+            c.fillStyle = "white";
+        }
+        
         c.arc(x, y, s, 0, Math.PI*2);
         c.fill();
     }
